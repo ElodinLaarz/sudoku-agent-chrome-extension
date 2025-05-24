@@ -1,7 +1,5 @@
 // src/llm/ollama_client.ts
-
-const OLLAMA_API_URL = "http://localhost:11434/api/generate";
-const MODEL_NAME = "llama3.1:8b";
+import { OLLAMA_API_URL, MODEL_NAME } from "../common/constants";
 
 export interface OllamaResponse {
   model: string;

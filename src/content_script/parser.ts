@@ -1,8 +1,12 @@
 // src/content_script/parser.ts
+import {
+  SVG_SELECTOR,
+  CELL_SIZE,
+  GIVEN_GROUP_SELECTOR,
+  PEN_GROUP_SELECTOR,
+  VALUES_GROUP_SELECTOR,
+} from "../common/constants";
 import { SudokuGrid, PuzzleState } from "../common/types";
-
-const SVG_SELECTOR = "svg#svgrenderer";
-const CELL_SIZE = 64;
 
 /**
  * Calculates the row and column based on SVG coordinates.
@@ -80,8 +84,6 @@ function parseGroup(
  * @returns {PuzzleState | null} The parsed grid state, or null if not found.
  */
 export function parseSudokuPadGrid(): PuzzleState | null {
-  console.log("Attempting to parse Sudoku grid (v3)...");
-
   const svgElement = document.querySelector(
     SVG_SELECTOR,
   ) as SVGSVGElement | null;
@@ -105,9 +107,9 @@ export function parseSudokuPadGrid(): PuzzleState | null {
     );
 
   // Parse 'givens' first. Look for 'text' elements within 'g#cell-givens'.
-  parseGroup("g#cell-givens", svgElement, grid, true);
-  parseGroup("g#cell-pen", svgElement, grid, false);
-  parseGroup("g#cell-values", svgElement, grid, false);
+  parseGroup(GIVEN_GROUP_SELECTOR, svgElement, grid, true);
+  parseGroup(PEN_GROUP_SELECTOR, svgElement, grid, false);
+  parseGroup(VALUES_GROUP_SELECTOR, svgElement, grid, false);
 
   console.log("Parsing complete.");
   return { grid };
