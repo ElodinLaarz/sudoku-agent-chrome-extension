@@ -1,12 +1,7 @@
 // src/content_script/index.ts
-// TODO: ElodinLaarz - Implement the content script logic
-// 1. Detect the Sudoku grid (SVG elements)
-// 2. Parse the grid numbers and structure
-// 3. Listen for messages from the side_panel/background script
-// 4. Send messages (e.g., the parsed grid) back to the side_panel/background
-// 5. Highlight cells based on LLM suggestions
-
+import { MSG_HIGHLIGHT_CELLS, MSG_CLEAR_HIGHLIGHTS } from "../common/constants";
 import { parseSudokuPadGrid } from "./parser";
+import { highlightCells, clearHighlights } from "./highlighter";
 
 console.log("Sudoku Agent content script loaded on:", window.location.href);
 
@@ -29,9 +24,22 @@ window.addEventListener("load", () => {
   setTimeout(runParserAndStore, 1000);
 });
 
-// --- IMPORTANT ---
-// We need a way to re-run the parser when the user makes changes.
-// Sudokupad.app might not trigger simple 'click' or 'change' events
-// on the SVG. A MutationObserver is the most robust way.
-// We'll add this *later* to keep things simple now.
-// For now, we'll just parse on load.
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  console.log("Content script received message:", message);
+
+  try {
+    if (message.type === MSG_HIGHLIGHT_CELLS) {
+      highlightCells(message.cells);
+    } else if (message.type === MSG_CLEAR_HIGHLIGHTS) {
+      clearHighlights();
+    }
+    sendResponse({ success: true, received: true });
+  } catch (error) {
+    console.error("Error processing message in content script:", error);
+    sendResponse({ success: false, error: String(error) });
+  }
+
+  return false;
+});
+
+// --- TODO: Add MutationObserver here later ---
