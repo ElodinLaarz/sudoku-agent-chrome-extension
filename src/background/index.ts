@@ -22,7 +22,7 @@ chrome.action.onClicked.addListener(async (tab) => {
 /**
  * Parses R_C_ (e.g., R1C1, R9C9) coordinates from a string.
  * @param text - The text from the LLM.
- * @returns An array of objects { row: numer, col: number }.
+ * @returns An array of objects { row: number, col: number }.
  */
 function parseCoordinates(text: string): { row: number; col: number }[] {
   const regex = /R([1-9])C([1-9])/gi; // Case-insensitive, global search
