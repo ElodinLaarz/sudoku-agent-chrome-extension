@@ -7,12 +7,7 @@
   "icons": {
     "128": "assets/solver-128.png"
   },
-  "permissions": [
-    "activeTab",
-    "sidePanel",
-    "scripting",
-    "storage"
-  ],
+  "permissions": ["activeTab", "sidePanel", "scripting", "storage"],
   "background": {
     "service_worker": "js/background.js"
   },

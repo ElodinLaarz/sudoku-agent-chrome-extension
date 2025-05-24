@@ -6,27 +6,27 @@
 // 4. Send messages (e.g., the parsed grid) back to the side_panel/background
 // 5. Highlight cells based on LLM suggestions
 
-import { parseSudokuPadGrid } from './parser';
+import { parseSudokuPadGrid } from "./parser";
 
-console.log('Sudoku Agent content script loaded on:', window.location.href);
+console.log("Sudoku Agent content script loaded on:", window.location.href);
 
 function runParserAndStore() {
-    const puzzleState = parseSudokuPadGrid();
+  const puzzleState = parseSudokuPadGrid();
 
-    if (puzzleState) {
-        console.log("Successfully parsed grid:", puzzleState.grid);
-        // Store the grid in Chrome's local storage
-        chrome.storage.local.set({ sudokuGrid: puzzleState.grid }, () => {
-            console.log("Grid saved to storage.");
-        });
-    } else {
-        console.error("Failed to parse the Sudoku grid.");
-    }
+  if (puzzleState) {
+    console.log("Successfully parsed grid:", puzzleState.grid);
+    // Store the grid in Chrome's local storage
+    chrome.storage.local.set({ sudokuGrid: puzzleState.grid }, () => {
+      console.log("Grid saved to storage.");
+    });
+  } else {
+    console.error("Failed to parse the Sudoku grid.");
+  }
 }
 
 // Run once on load (with a delay)
-window.addEventListener('load', () => {
-    setTimeout(runParserAndStore, 1000);
+window.addEventListener("load", () => {
+  setTimeout(runParserAndStore, 1000);
 });
 
 // --- IMPORTANT ---

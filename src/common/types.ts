@@ -2,10 +2,10 @@
 
 /** Represents a single cell in the Sudoku grid */
 export interface SudokuCell {
-  row: number;         // 0-8
-  col: number;         // 0-8
+  row: number; // 0-8
+  col: number; // 0-8
   value: number | null; // 1-9, or null if empty
-  isGiven: boolean;    // Was this number part of the initial puzzle?
+  isGiven: boolean; // Was this number part of the initial puzzle?
 }
 
 /** Represents the entire Sudoku grid */
