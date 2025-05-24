@@ -37,6 +37,7 @@ module.exports = {
       patterns: [
         { from: 'static/manifest.json', to: 'manifest.json' },
         { from: 'src/assets', to: 'assets' },
+        { from: 'src/side_panel/sidepanel.css', to: 'sidepanel.css' },
       ],
     }),
     new HtmlWebpackPlugin({
