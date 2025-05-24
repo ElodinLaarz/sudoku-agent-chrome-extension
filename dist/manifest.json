@@ -1,7 +1,0 @@
-{
-  "manifest_version": 3,
-  "name": "Sudoku Solving Agent",
-  "version": "0.1.0",
-  "description": "A helpful agent to assist with Sudoku puzzles on sudokupad.app.",
-  // TODO: add all the things.
-}
