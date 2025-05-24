@@ -49,17 +49,17 @@ Follow these steps to get the Sudoku Solving Agent running locally:
 ### 2. Install & Configure Ollama
 
 1.  **Download the LLM Model:** Once Ollama is installed and running, pull
-    the Llama 3.1 8B model:
+    the Llama 3.1 8B model (or any model you want, really):
 
     ```bash
     ollama pull llama3.1:8b
-    ollama run llama3.1:8b
     ```
 
 2.  **Configure Ollama CORS:** The Chrome extension needs permission to talk
     to the Ollama server. You must configure Ollama to allow requests from
     Chrome extensions. The easiest way is often to set the `OLLAMA_ORIGINS`
     environment variable.
+
     - **For Manual Start/Other OS:** Set the environment variable before
       starting Ollama (e.g., `export OLLAMA_ORIGINS="*"` on Linux/macOS or set
       it in your system settings on Windows) and then start the Ollama
@@ -68,12 +68,22 @@ Follow these steps to get the Sudoku Solving Agent running locally:
       export OLLAMA_ORIGINS="chrome-extension://<your-extension-id>"
       ```
 
+3.  **Start the Ollama Server:** If you haven't already, start the Ollama
+    server. This is usually done by running:
+
+    ```bash
+    ollama serve
+
+    # <and in another terminal>
+    ollama run llama3.1:8b
+    ```
+
 ### 3. Install the Extension
 
 1.  **Clone the Repository:**
 
     ```bash
-    git clone [https://github.com/ElodinLaarz/sudoku-agent-chrome-extension.git](https://github.com/ElodinLaarz/sudoku-agent-chrome-extension.git)
+    git clone https://github.com/ElodinLaarz/sudoku-agent-chrome-extension.git
     cd sudoku-agent-chrome-extension
     ```
 
@@ -87,7 +97,8 @@ Follow these steps to get the Sudoku Solving Agent running locally:
     ```bash
     npm run build
     ```
-    _(This creates the `dist/` directory, which contains the actual extension files)._
+    _(This creates the `dist/` directory, which contains the actual extension
+    files)._
 
 ### 4. Load in Chrome
 
