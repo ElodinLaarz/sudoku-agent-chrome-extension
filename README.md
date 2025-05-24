@@ -133,7 +133,6 @@ Follow these steps to get the Sudoku Solving Agent running locally:
 ## TODOs 🔮
 
 - Implement `MutationObserver` for real-time grid updates.
-- Add interactive highlighting of cells on the grid based on LLM suggestions.
 - Improve prompt engineering for better Sudoku strategies.
 - Explore parsing variant rules text.
 - Refine the UI/UX.
