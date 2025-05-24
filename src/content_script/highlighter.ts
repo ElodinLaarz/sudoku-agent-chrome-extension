@@ -25,7 +25,7 @@ function getHighlightGroup(): SVGGElement | null {
 
   if (highlightGroups.length === 0) {
     console.error(
-      `Highlighter: Could not find highlight group #$HIGHLIGHT_GROUP_ID}.`,
+      `Highlighter: Could not find highlight group #${HIGHLIGHT_GROUP_ID}.`,
     );
     return null;
   }
