@@ -1,0 +1,41 @@
+{
+  "name": "sudoku-agent-chrome-extension",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElodinLaarz/sudoku-agent-chrome-extension.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ElodinLaarz/sudoku-agent-chrome-extension/issues"
+  },
+  "homepage": "https://github.com/ElodinLaarz/sudoku-agent-chrome-extension#readme",
+  "devDependencies": {
+    "@types/chrome": "^0.0.323",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
+    "copy-webpack-plugin": "^13.0.0",
+    "eslint": "^9.27.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.0",
+    "html-webpack-plugin": "^5.6.3",
+    "prettier": "^3.5.3",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.3",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "watch": "webpack --config webpack.config.js --watch",
+    "lint": "eslint . --ext .ts"
+  }
+}
