@@ -5,12 +5,13 @@
   "version": "0.1.0",
   "description": "A helpful agent to assist with Sudoku puzzles on sudokupad.app.",
   "icons": {
-    "16": "assets/placeholder.svg"
+    "128": "assets/solver-128.png"
   },
   "permissions": [
     "activeTab",
     "sidePanel",
-    "scripting"
+    "scripting",
+    "storage"
   ],
   "background": {
     "service_worker": "js/background.js"

@@ -10,16 +10,28 @@ import { parseSudokuPadGrid } from './parser';
 
 console.log('Sudoku Agent content script loaded on:', window.location.href);
 
-// Give the page a moment to fully load its SVG content
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        const puzzleState = parseSudokuPadGrid();
+function runParserAndStore() {
+    const puzzleState = parseSudokuPadGrid();
 
-        if (puzzleState) {
-            console.log("Successfully parsed grid:", puzzleState.grid);
-            // TODO: Send this puzzleState to the background or sidebar
-        } else {
-            console.error("Failed to parse the Sudoku grid.");
-        }
-    }, 1000); // 1-second delay, might need adjustment or a better trigger
+    if (puzzleState) {
+        console.log("Successfully parsed grid:", puzzleState.grid);
+        // Store the grid in Chrome's local storage
+        chrome.storage.local.set({ sudokuGrid: puzzleState.grid }, () => {
+            console.log("Grid saved to storage.");
+        });
+    } else {
+        console.error("Failed to parse the Sudoku grid.");
+    }
+}
+
+// Run once on load (with a delay)
+window.addEventListener('load', () => {
+    setTimeout(runParserAndStore, 1000);
 });
+
+// --- IMPORTANT ---
+// We need a way to re-run the parser when the user makes changes.
+// Sudokupad.app might not trigger simple 'click' or 'change' events
+// on the SVG. A MutationObserver is the most robust way.
+// We'll add this *later* to keep things simple now.
+// For now, we'll just parse on load.
