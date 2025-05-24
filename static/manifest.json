@@ -1,7 +1,30 @@
+// static/manifest.json
 {
   "manifest_version": 3,
   "name": "Sudoku Solving Agent",
   "version": "0.1.0",
   "description": "A helpful agent to assist with Sudoku puzzles on sudokupad.app.",
-  // TODO: add all the things.
+  "icons": {
+    "16": "assets/placeholder.svg"
+  },
+  "permissions": [
+    "activeTab",
+    "sidePanel",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "action": {
+    "default_title": "Sudoku Agent"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://sudokupad.app/*"],
+      "js": ["js/content_script.js"]
+    }
+  ],
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  }
 }

@@ -9,7 +9,7 @@ module.exports = {
   entry: {
     background: './src/background/index.ts',
     content_script: './src/content_script/index.ts',
-    sidebar: './src/sidebar/index.ts',
+    side_panel: './src/side_panel/index.ts',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -40,9 +40,9 @@ module.exports = {
       ],
     }),
     new HtmlWebpackPlugin({
-      template: './src/sidebar/Sidebar.html',
-      filename: 'sidebar.html',
-      chunks: ['sidebar'],
+      template: './src/side_panel/sidepanel.html',
+      filename: 'sidepanel.html',
+      chunks: ['side_panel'],
     }),
   ],
 };
